@@ -15,22 +15,22 @@ const FormRegister = () => {
                     <input
                         type="text"
                         placeholder="Username"
-                        className="p-[12px] border border-gray-300 rounded"
+                        className="p-[12px] border border-gray-300 rounded focus:border-[#ee2761] focus:outline-none"
                     />
                     <input
                         type="text"
                         placeholder="Email Address"
-                        className="p-[12px] border border-gray-300 rounded"
+                        className="p-[12px] border border-gray-300 rounded focus:border-[#ee2761] focus:outline-none"
                     />
                     <input
                         type="password"
                         placeholder="Password"
-                        className="p-[12px] border border-gray-300 rounded"
+                        className="p-[12px] border border-gray-300 rounded focus:border-[#ee2761] focus:outline-none"
                     />
                     <input
                         type="password"
                         placeholder="Confirm Password"
-                        className="p-[12px] border border-gray-300 rounded"
+                        className="p-[12px] border border-gray-300 rounded focus:border-[#ee2761] focus:outline-none"
                     />
                 </div>
 

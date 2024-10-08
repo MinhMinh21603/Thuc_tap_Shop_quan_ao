@@ -15,13 +15,13 @@ const FormLogin = () => {
                     <input
                         type="text"
                         placeholder="Email Address"
-                        className="p-[12px] border border-gray-300 rounded focus:border-[#ee2761]"
+                        className="p-[12px] border border-gray-300 rounded  focus:border-[#ee2761] focus:outline-none"
                     />
                     <input
                         type="password"
                         placeholder="Password"
-                        className="p-[12px] border border-gray-300 rounded"
-                    />
+                        className="p-[12px] border border-gray-300 rounded focus:border-[#ee2761] focus:outline-none"
+                    /> 
                 </div>
 
                 <div className="flex justify-between items-center">
