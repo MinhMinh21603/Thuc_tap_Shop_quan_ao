@@ -43,8 +43,8 @@ const Page = () => {
                 <FormRegister />
             </div>
 
-            <div className="py-[90px] px-4 sm:px-[80px] lg:px-[175px] w-full bg-gray-100">
-                <Sponsor sponsors={sponsors} /> {/* Pass the sponsors array */}
+            <div className="px-4 sm:px-[80px] lg:px-[175px] w-full bg-gray-100">
+                <Sponsor sponsors={sponsors} /> 
             </div>
         </div>
     );
