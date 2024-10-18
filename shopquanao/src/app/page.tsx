@@ -1,187 +1,100 @@
-// import Card from './card/page';
-"use client";
-import React, { useRef, useState } from "react";
-import './style/global.css'
-import CardProduct from './card/page' // import card
-import CardSliensay from './cardsliensay/page' //import card sliensay 
-import { useSwipeable } from "react-swipeable"; // import hiệu ứng kéo
+import Image from "next/image";
 
-const DataProduct = [
-  {
-    id: 1,
-    imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
-    Titlecategory: 'jean,ngắn',
-    Titleproduct: 'quần jean hook',
-    price: 19000,
-    isOnSale: true,
-  },
-  {
-    id: 2,
-    imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
-    Titlecategory: 'jean,ngắn',
-    Titleproduct: 'quần jean hook',
-    price: 19000,
-    isOnSale: true,
-  },
-  {
-    id: 3,
-    imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
-    Titlecategory: 'jean,ngắn',
-    Titleproduct: 'quần jean hook',
-    price: 19000,
-    isOnSale: true,
-  },
-
-  {
-    id: 4,
-    imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
-    Titlecategory: 'jean,ngắn',
-    Titleproduct: 'quần jean hook',
-    price: 19000,
-    isOnSale: false,
-  },
-  {
-    id: 5,
-    imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
-    Titlecategory: 'jean,ngắn',
-    Titleproduct: 'quần jean hook',
-    price: 19000,
-    isOnSale: true,
-  }
-
-]
-const mocksliensay = [
-  {
-    id: 1,
-    imageURL: "https://i.pinimg.com/236x/ce/4f/3e/ce4f3e2e41e7bf8715400de9b34a5b61.jpg",
-    titleNameSlien: 'Neko John',
-    titleProductSlien: "Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  },
-  {
-    id: 2,
-    imageURL: "https://i.pinimg.com/236x/ce/4f/3e/ce4f3e2e41e7bf8715400de9b34a5b61.jpg",
-    titleNameSlien: 'Neko John',
-    titleProductSlien: "Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  },
-  {
-    id: 3,
-    imageURL: "https://i.pinimg.com/236x/ce/4f/3e/ce4f3e2e41e7bf8715400de9b34a5b61.jpg",
-    titleNameSlien: 'Neko John',
-    titleProductSlien: "Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  },
-  {
-    id: 4,
-    imageURL: "https://i.pinimg.com/236x/ce/4f/3e/ce4f3e2e41e7bf8715400de9b34a5b61.jpg",
-    titleNameSlien: 'Neko John',
-    titleProductSlien: "Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  },
-  {
-    id: 5,
-    imageURL: "https://i.pinimg.com/236x/ce/4f/3e/ce4f3e2e41e7bf8715400de9b34a5b61.jpg",
-    titleNameSlien: 'Neko John',
-    titleProductSlien: "Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  },
-  {
-    id: 6,
-    imageURL: "https://i.pinimg.com/236x/ce/4f/3e/ce4f3e2e41e7bf8715400de9b34a5b61.jpg",
-    titleNameSlien: 'Neko John',
-    titleProductSlien: "Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  },
-  {
-    id: 7,
-    imageURL: "https://i.pinimg.com/236x/ce/4f/3e/ce4f3e2e41e7bf8715400de9b34a5b61.jpg",
-    titleNameSlien: 'Neko John',
-    titleProductSlien: "Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  },
-  {
-    id: 8,
-    imageURL: "https://i.pinimg.com/236x/ce/4f/3e/ce4f3e2e41e7bf8715400de9b34a5b61.jpg",
-    titleNameSlien: 'Neko John',
-    titleProductSlien: "Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  },
-
-]
 export default function Home() {
-  const [startIndex] = useState(0);
-  // const carouseRef
-
-  // vì usestate chỉ dùng trong function componnent không được để ngoài không cập nhật usestate
-  // điều hướng next
-  // bắt sự kiện kéo ngang
-  // const swipeHandlers = useSwipeable({
-  //   trackMouse: true, // cho phep keo bang chuot
-  //   preventDefaultTouchmoveEvent: true,
-  //   onSwipedLeft: handleNext,
-  //   onSwipedRight: handlePrev,
-  // })
-
   return (
-    // Our Best Seller
-    <div className='w-screen px-11'>
-      <div className='w-full  bg-white  justify-center items-start p-4'>
-        <h2 className='text-center font-bold text-2xl'>Our Best Seller</h2>
-        <hr className='my-4 h-1 w-40 border-gray-500 mx-auto' />
-      </div>
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font -geist-sans)]">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <Image
+          className="dark:invert"
+          src="https://nextjs.org/icons/next.svg"
+          alt="Next.js logo"
+          width={180}
+          height={38}
+          priority
+        />
+        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+          <li className="mb-2">
+            Get started by editing{" "}
+            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
+              src/app/page.tsx
+            </code>
+            .
+          </li>
+          <li>Save and see your changes instantly.</li>
+        </ol>
 
-      <div className=" container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 justify-items-center pb-20 ">
-        {DataProduct.slice(0, 4).map(DataProduct => (
-          <CardProduct
-            key={DataProduct.id}
-            imageURL={DataProduct.imageURL}
-            Titlecategory={DataProduct.Titlecategory}
-            Titleproduct={DataProduct.Titleproduct}
-            price={DataProduct.price}
-          />
-        ))}
-      </div>
-
-
-      <div className=' w-full h-40 grid grid-cols-1 md:grid-cols-2 gap-20  py-5'>
-        <div className='relative w-full  md:w-746 h-281 bg-cover bg-center flex flex-col p-6  ' style={{ backgroundImage: 'url("https://i.pinimg.com/736x/7e/03/3e/7e033e5cc63015a919ebf761fd351dc6.jpg")' }}>
-          <h3 className='text-lg font-bold mb-4 text-gray-400'>Pick Your Items</h3>
-          <h3 className='text-2xl font-bold mb-2'>Up to 25% Off Order Now</h3>
-          <a href="#" className='text-gray-400 hover:underline hover:text-pink-700'>Show now</a>
-        </div>
-        <div className='relative w-full  md:w-746 h-281 bg-cover bg-center flex flex-col p-6  ' style={{ backgroundImage: 'url("https://i.pinimg.com/736x/7e/03/3e/7e033e5cc63015a919ebf761fd351dc6.jpg")' }}>
-          <h3 className='text-lg font-bold mb-4 text-gray-400'>Pick Your Items</h3>
-          <h3 className='text-2xl font-bold mb-2'>Up to 25% Off Order Now</h3>
-          <a href="#" className='text-gray-400 hover:underline hover:text-pink-700'>Show now</a>
-        </div>
-      </div>
-
-      <div >
-        <div className='relative w-full  bg-white  justify-center items-start pt-20'>
-          <h2 className='text-center font-bold text-2xl'>Our Best Seller</h2>
-          <hr className='my-4 h-1 w-40 border-gray-500 mx-auto' />
-        </div>
-        <div className=" container flex flex-col items-center">
-          <div className=' flex justify-between w-full overflow-x-auto'
-          // {...swipeHandlers} // cho chúng ta kéo ngang 
+        <div className="flex gap-4 items-center flex-col sm:flex-row">
+          <a
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            {mocksliensay.slice(startIndex, startIndex + 4).map((item) => (
-
-              <CardSliensay
-                key={item.id}
-                imageURl={item.imageURL}
-                titleNameSlien={item.titleNameSlien}
-                titleProductSlien={item.titleProductSlien}
-              />
-
-
-
-            ))}
-
-          </div>
+            <Image
+              className="dark:invert"
+              src="https://nextjs.org/icons/vercel.svg"
+              alt="Vercel logomark"
+              width={20}
+              height={20}
+            />
+            Deploy now
+          </a>
+          <a
+            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read our docs
+          </a>
         </div>
-      </div>
+      </main>
+      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/file.svg"
+            alt="File icon"
+            width={16}
+            height={16}
+          />
+          Learn
+        </a>
+        <a className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/window.svg"
+            alt="Window icon"
+            width={16}
+            height={16}
+          />
+          Examples
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/globe.svg"
+            alt="Globe icon"
+            width={16}
+            height={16}
+          />
+          Go to nextjs.org →
+        </a>
+      </footer>
     </div>
-
-
-
-
-
-
   );
-
-
-};
+}
