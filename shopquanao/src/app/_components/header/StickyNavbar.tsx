@@ -23,9 +23,9 @@ const StickyNavbar = () => {
       }`}
     >
     <div className="bg-white shadow-md">
-        <div className='container mx-auto flex justify-between items-center px-10 bg-white py-6'>
+        <div className='container mx-auto flex justify-between items-center bg-white py-6'>
             {/* Logo */}
-        <div className="flex items-center space-x-2">
+        <div className="flex">
           <Image src="/img/logo/logo.png" alt="Logo" width={160} height={160} />
         </div>
 
