@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React from 'react';
 
 const NavBar = () => {
@@ -14,7 +15,7 @@ const NavBar = () => {
           <a href="#" className="text-grayColor hover:text-backgroundPink">Shop</a>
         </div>
         <div className="relative group">
-          <a href="#" className="text-grayColor hover:text-backgroundPink">About US</a>
+          <Link href={'/pages/about-us'} className="text-grayColor hover:text-backgroundPink">About US</Link>
         </div>
         <div className="relative group">
           <a href="#" className="text-grayColor hover:text-backgroundPink">Blog</a>
