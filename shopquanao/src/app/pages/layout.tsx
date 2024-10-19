@@ -1,12 +1,14 @@
 import React from 'react';
-    
+import HeaderClient from '../_components/HeaderClient';
+
 const layout = ({children}: {children: React.ReactNode}) => {
     return (
         <div className=''> 
-        <main>
-            {children}
-        </main>
-    </div>
+            <HeaderClient></HeaderClient>
+            <main>
+                {children}
+            </main>
+        </div>
     );
 };
 
