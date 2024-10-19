@@ -1,8 +1,8 @@
-import "./globals.css";
+import "./style/global.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Providers } from "./Providers";
 import HeaderClient from "./_components/header/HeaderClient";
-import Slideshow from "./_components/banner/Slideshow";
+// import Slideshow from "./_components/banner/Slideshow";
 
 export const metadata = {
   title: {
@@ -23,9 +23,9 @@ export default function RootLayout({
       >
         <AppRouterCacheProvider>
           <Providers>
-          <HeaderClient />
+            <HeaderClient />
             {children}
-            </Providers>
+          </Providers>
 
         </AppRouterCacheProvider>
       </body>
