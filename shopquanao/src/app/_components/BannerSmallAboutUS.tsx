@@ -17,7 +17,7 @@ const BannerSmallAboutUS: React.FC<BannerLoginProps> = ({ image }) => {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 100vw"
             />
             <div className="relative z-30 text-center w-full">
-                <div className='grid grid-cols-1 md:grid-cols-4 justify-between'>
+                <div className='grid grid-cols-2 md:grid-cols-4 justify-between gap-4 md:gap-0'>
                     <div className='flex flex-col items-center'>
                         <span className='font-bold text-white text-lg max-w-32'>YEARS OF FOUNDATION</span>
                         <span className='text-3xl text-white font-bold'>50</span>
