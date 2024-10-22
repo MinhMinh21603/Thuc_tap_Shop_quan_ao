@@ -46,7 +46,7 @@ const AboutUs = () => {
       <div className="px-4 sm:px-[80px] lg:px-[175px] w-full bg-white">
         <Sponsor sponsors={sponsors} />
       </div>
-      <div className="w-full bg-[#ee2761] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center content-center h-[219px]">
+      <div className="w-full bg-[#ee2761] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center content-evenly h-[219px] px-[175px]">
   <div className="w-[164px] h-[39px] group relative">
     <Image
       src={"/rollupBanner.jpg"}
@@ -83,7 +83,7 @@ const AboutUs = () => {
       className="group-hover:scale-110 transition-all duration-300"
     />
   </div>
-  <div className="w-[163px] h-[39px] group relative col-span-2 sm:col-auto">
+  <div className="w-[164px] h-[39px] group relative col-span-2 sm:col-auto">
     <Image
       src={"/rollupBanner.jpg"}
       alt="something"
