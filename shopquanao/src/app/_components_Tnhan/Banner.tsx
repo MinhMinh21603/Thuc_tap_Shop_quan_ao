@@ -2,7 +2,7 @@
 
 const Banner = () => {
   return (
-    <section className="bg-gray-100">
+    <section>
   <div className="container bg-gray-600 mx-auto text-white flex flex-col items-start justify-center h-[400px] px-6">
     <h2 className="text-4xl font-bold mb-4">Need Winter Boots?</h2>
     <p className="mb-6">

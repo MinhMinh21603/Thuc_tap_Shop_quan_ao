@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderClient from '../_components/HeaderClient';
+import Footer from '../_components_Tnhan/Footer';
 
 const layout = ({children}: {children: React.ReactNode}) => {
     return (
@@ -8,6 +9,7 @@ const layout = ({children}: {children: React.ReactNode}) => {
             <main>
                 {children}
             </main>
+            <Footer></Footer>
         </div>
     );
 };
