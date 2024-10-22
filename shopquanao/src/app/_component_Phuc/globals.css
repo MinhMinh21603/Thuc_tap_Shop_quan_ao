@@ -1,0 +1,112 @@
+/* styles/NewProducts.css */
+.new-products {
+  text-align: center;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #eee;
+  padding: 10px;
+}
+
+.product-image {
+  position: relative;
+}
+
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px;
+}
+
+.product-info {
+  margin-top: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  padding: 25px;
+}
+
+.product-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.deals-container {
+  background-color: #f0f0f0;
+  padding: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.deal-header {
+  color: #ff3366;
+  font-size: 1.2rem;
+}
+
+.deal-title {
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
+
+.deal-description {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.time-section {
+  background-color: white;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.time-section p {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.time-section span {
+  display: block;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.colon {
+  font-size: 2rem;
+  margin: 0 10px;
+}
+
+.deal-button {
+  background-color: #ff3366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 51, 102, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.deal-button:hover {
+  background-color: #ff5588;
+}
