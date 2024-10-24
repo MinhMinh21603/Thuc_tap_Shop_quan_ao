@@ -1,8 +1,9 @@
 import "./style/global.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Providers } from "./Providers";
-import HeaderClient from "./_components/header/HeaderClient";
-import Footer from "./_components_Tnhan/Footer";
+import Product from './_components_MInh/product_/product_shop'
+import Page from '../app/_components_MInh/card/page_list';
+import Cart from './-components_Phu/cartmini'
 // import Slideshow from "./_components/banner/Slideshow";
 
 export const metadata = {
@@ -24,9 +25,9 @@ export default function RootLayout({
       >
         <AppRouterCacheProvider>
           <Providers>
-            <HeaderClient />
+            <Product />
+
             {children}
-            <Footer></Footer>
           </Providers>
 
         </AppRouterCacheProvider>
