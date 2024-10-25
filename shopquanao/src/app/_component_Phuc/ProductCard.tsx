@@ -1,8 +1,10 @@
 // components/ProductCard.js
+"use client";
+
 import React from 'react';
 
-interface ProductCardProps{
-    product: Product
+interface ProductCardProps {
+  product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {

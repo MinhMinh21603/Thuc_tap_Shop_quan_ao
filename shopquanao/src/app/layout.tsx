@@ -1,8 +1,8 @@
 import "./style/global.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Providers } from "./Providers";
-import Product from './_components_MInh/product_/product_shop'
-import Page from '../app/_components_MInh/card/page_list';
+import Footer from "./_components_Tnhan/Footer";
+import HeaderClient from './_components/header/HeaderClient';
 
 // import Slideshow from "./_components/banner/Slideshow";
 
@@ -24,12 +24,12 @@ export default function RootLayout({
       <body
       >
         <AppRouterCacheProvider>
+          <HeaderClient />
           <Providers>
-            <Product />
 
             {children}
           </Providers>
-
+          <Footer />
         </AppRouterCacheProvider>
       </body>
     </html>
