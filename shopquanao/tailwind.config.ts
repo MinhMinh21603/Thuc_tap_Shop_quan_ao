@@ -15,6 +15,7 @@ const config: Config = {
         backgroundDropdown: '#061838',
         hoverColor: '#061838',
         grayColor: '#606060',
+        FCFCFC: '#EAEAEA',
       },
       width: {
         searchBar: "550px",
