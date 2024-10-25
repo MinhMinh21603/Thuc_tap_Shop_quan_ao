@@ -3,7 +3,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Providers } from "./Providers";
 import Product from './_components_MInh/product_/product_shop'
 import Page from '../app/_components_MInh/card/page_list';
-import Cart from './-components_Phu/cartmini'
+
 // import Slideshow from "./_components/banner/Slideshow";
 
 export const metadata = {
