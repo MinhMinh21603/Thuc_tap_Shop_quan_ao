@@ -21,10 +21,7 @@ const NavBar = () => {
             <a href="/blog" className="text-grayColor hover:text-backgroundPink">Blog</a>
           </div>
           <div className="relative group">
-            <a href="#" className="text-grayColor hover:text-backgroundPink">Categories</a>
-          </div>
-          <div className="relative group">
-            <a href="#" className="text-grayColor hover:text-backgroundPink">Pages</a>
+            <a href="/product-home" className="text-grayColor hover:text-backgroundPink">Categories</a>
           </div>
           <div className="relative group">
             <a href="/contact" className="text-grayColor hover:text-backgroundPink">Contact</a>

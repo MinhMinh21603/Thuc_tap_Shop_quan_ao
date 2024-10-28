@@ -113,7 +113,7 @@ const Product = () => {
             </header >
             {/*content display*/}
             <div className={selectButton === 'button_list' ? 'grid grid-cols-4 gap-4' : 'list space-y-2'}>
-                {DataProduct.slice(0, 4).map((DataProduct) => (
+                {DataProduct.map((DataProduct) => (
                     <div key={DataProduct}>
                         {selectButton === 'button_grid' ? (
                             // Card layout for grid view

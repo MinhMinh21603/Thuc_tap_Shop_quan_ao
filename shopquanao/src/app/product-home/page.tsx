@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import '../style/global.css'
 import Page_product from '../_components_MInh/card/page';
 import Card_product from '../_components_MInh/card/page_list';
+import Card_payment from '../_components_MInh/card_Payment/Page';
 import SegmentIcon from '@mui/icons-material/Segment';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import WindowIcon from '@mui/icons-material/Window';
@@ -56,7 +57,7 @@ const Product = () => {
     return (
         <div>
             < header >
-                <div className='w-auto  bg-white py-2 shadow-md flex  items-center'>
+                <div className='w-auto  bg-white py-2 shadow-md flex  items-center pt-10'>
                     {/* Nút Filter */}
                     <div className='flex items-center mr-4 '>
                         <button className=' mr-4 flex items-center p-2 border border-transparent border-gray-400 hover:border-pink-700 hover:text-pink-700 hover:bg-white transition'>
@@ -137,6 +138,8 @@ const Product = () => {
                     </div>
                 ))}
             </div>
+            <Card_payment />
+
         </div>
     )
 
