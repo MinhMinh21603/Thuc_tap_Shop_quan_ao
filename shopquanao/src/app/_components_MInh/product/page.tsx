@@ -2,11 +2,15 @@
 import React, { useState } from 'react'
 
 import '../style/global.css'
-import Page_product from '../card/page';
-import Card_product from '../card/page_list';
+import Pageproduct from '../card/page';
+import Cardproduct from '../card/page_list';
 import SegmentIcon from '@mui/icons-material/Segment';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import WindowIcon from '@mui/icons-material/Window';
+
+const handleChange = () => {
+    console.log("hello");
+}
 const Product = () => {
     const [selectButton, setSelectButton] = useState('button_list');
     const DataProduct = [
@@ -15,6 +19,7 @@ const Product = () => {
             imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
             Titlecategory: 'jean,ngắn',
             Titleproduct: 'quần jean hook',
+            Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: true,
         },
@@ -23,6 +28,7 @@ const Product = () => {
             imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
             Titlecategory: 'jean,ngắn',
             Titleproduct: 'quần jean hook',
+            Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: true,
         },
@@ -31,6 +37,7 @@ const Product = () => {
             imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
             Titlecategory: 'jean,ngắn',
             Titleproduct: 'quần jean hook',
+            Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: true,
         },
@@ -40,6 +47,7 @@ const Product = () => {
             imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
             Titlecategory: 'jean,ngắn',
             Titleproduct: 'quần jean hook',
+            Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: false,
         },
@@ -48,6 +56,7 @@ const Product = () => {
             imageURL: 'https://i.pinimg.com/236x/a3/15/6f/a3156f0f78eabcb76cf0c483a7dc3d31.jpg',
             Titlecategory: 'jean,ngắn',
             Titleproduct: 'quần jean hook',
+            Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: true,
         }
@@ -69,9 +78,9 @@ const Product = () => {
                     </div>
                     {/* nút Pre Page*/}
                     <div className='flex items-center mr-4 p-2'>
-                        <span className='mr-4 font-bold'>Prev Page :</span>
-                        <select name="FrevPage" id="Page" className='items-center w-auto border border-gray-400 p-1'>
-                            <option value="65">65</option>
+                        <label htmlFor='Page' className='mr-4 font-bold'>Prev Page :</label>
+                        <select name="Frev Page" id="Page" className='items-center w-auto border border-gray-400 p-1' onChange={handleChange}>
+                            <option value="65" selected>65</option>
                             <option value="40">40</option>
                             <option value="42">42</option>
                             <option value="57">57</option>
@@ -80,7 +89,7 @@ const Product = () => {
                     </div>
                     {/* nút Sort By*/}
                     <div className='flex items-center mr-4 p-2'>
-                        <span className='mr-4 font-bold'>Sort By :</span>
+                        <label htmlFor='Sort' className='mr-4 font-bold'>Sort By :</label>
                         <select name="SortBy" id="Sort" className='items-center w-auto border border-gray-400 p-2'>
                             <option value="Sory By Latest">Sory By Latest</option>
                             <option value="Sort By popularity">Sort By popularity</option>
@@ -95,7 +104,10 @@ const Product = () => {
                             id='button_list'
                             value={'button_list'}
                             className={`p-2 border transition  ${selectButton === "button_list" ? 'border-pink-700 bg-white text-pink-700' : 'border-gray-200 bg-white text-black'}`}
-                            onClick={() => setSelectButton('button_list')}>
+                            onClick={() => setSelectButton('button_list')}
+                            aria-label='Button list' // mổ ta3 nút mà ko cần hiện thị văn bản 
+                        >
+
                             <ReorderIcon />
                         </button>
 
@@ -103,7 +115,9 @@ const Product = () => {
                             id='button_grid'
                             value={'button_grid'}
                             className={`p-2 border ${selectButton === "button_grid" ? 'border-pink-700 bg-white text-pink-700' : 'border-gray-200 bg-white text-black'}`}
-                            onClick={() => setSelectButton('button_grid')}>
+                            onClick={() => setSelectButton('button_grid')}
+                            aria-label='button grid'
+                        >
                             <WindowIcon />
                         </button>
                     </div>
@@ -114,19 +128,20 @@ const Product = () => {
             {/*content display*/}
             <div className={selectButton === 'button_list' ? 'grid grid-cols-4 gap-4' : 'list space-y-2'}>
                 {DataProduct.map((DataProduct) => (
-                    <div key={DataProduct}>
+                    <div key={DataProduct.id}>
                         {selectButton === 'button_grid' ? (
                             // Card layout for grid view
-                            <Card_product
+                            <Cardproduct
                                 key={DataProduct.id}
                                 imageURL={DataProduct.imageURL}
                                 Titlecategory={DataProduct.Titlecategory}
                                 Titleproduct={DataProduct.Titleproduct}
+                                Titlename={DataProduct.Titlename}
                                 price={DataProduct.price}
                             />
                         ) : (
                             // Card layout for list view
-                            <Page_product
+                            <Pageproduct
                                 key={DataProduct.id}
                                 imageURL={DataProduct.imageURL}
                                 Titlecategory={DataProduct.Titlecategory}

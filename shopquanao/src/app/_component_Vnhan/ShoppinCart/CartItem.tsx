@@ -1,17 +1,16 @@
 import React from 'react';
 
 interface CartItemProps {
-    id: number;
-    name: string;
-    price: number;
-    quantity: number;
-    color: string;
-    weight: string;
+  name: string;
+  price: number;
+  quantity: number;
+  color: string;
+  weight: string;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ id, name, price, quantity, color, weight }) => {
-    return (
-        <div className="grid grid-cols-5 gap-4 items-center border-b pb-4 mb-4">
+const CartItem: React.FC<CartItemProps> = ({ name, price, quantity, color, weight }) => {
+  return (
+    <div className="grid grid-cols-5 gap-4 items-center border-b pb-4 mb-4">
       <div className="flex items-center col-span-2">
         <div className="w-16 h-16 bg-gray-300 flex items-center justify-center text-xs">Ảnh</div>
         <div className="ml-4">
@@ -29,7 +28,7 @@ const CartItem: React.FC<CartItemProps> = ({ id, name, price, quantity, color, w
       <div className="text-center">{(price * quantity).toFixed(2)} đồng</div>
     </div>
 
-    );
+  );
 };
 
 export default CartItem;

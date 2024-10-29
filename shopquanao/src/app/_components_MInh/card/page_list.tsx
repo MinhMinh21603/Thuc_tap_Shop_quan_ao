@@ -6,19 +6,16 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
-interface CardProps {
+interface CardProp {
     imageURL: string;
     Titlecategory: string;
     Titleproduct: string;
     Titlename: string;
     price: number;
-    isOnSale: boolean;
+
 }
 
-
-
-
-const pagelist: React.FC<CardProps> = ({ imageURL, Titlecategory, Titleproduct, price, Titlename }) => {
+const Pagelist: React.FC<CardProp> = ({ imageURL, Titlecategory, Titleproduct, Titlename, price }) => {
     return (
         <div className='w-screen h-50 p-6'>
             <div className='grid grid-cols-1 md:grid-cols-[auto,1fr] gap-2'> {/* Thay đổi grid để cột thứ nhất chỉ vừa với hình ảnh */}
@@ -46,20 +43,21 @@ const pagelist: React.FC<CardProps> = ({ imageURL, Titlecategory, Titleproduct, 
                     </div>
                     <div className='w-15 flex justify-normal mt-10 gap-3 '>
                         <button className=" underline-none border border-gray-600  p-2 rounded-sm text-gray-500 hover:bg-pink-600 underline hover:text-white hover:border-white transition-colors duration-300 ">
-                            <ShoppingCartIcon />
-                            Add to Cart
+                            .<ShoppingCartIcon />
+
                         </button>
                         <button className='border border-gray-600  p-2 rounded-sm text-gray-500 hover:bg-pink-600 underline hover:text-white hover:border-white transition-colors duration-300 '>
-                            <FavoriteBorderIcon />
+                            . <FavoriteBorderIcon />
+
                         </button>
                         <button className='border border-gray-600  p-2 rounded-sm text-gray-500 hover:bg-pink-600 underline hover:text-white hover:border-white transition-colors duration-300 '>
-                            <RemoveRedEyeIcon />
+                            .<RemoveRedEyeIcon />
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     )
 }
-export default pagelist;
+export default Pagelist;

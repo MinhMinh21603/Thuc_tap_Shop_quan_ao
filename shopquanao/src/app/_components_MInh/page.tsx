@@ -130,8 +130,7 @@ export default function Home() {
                         imageURL={DataProduct.imageURL}
                         Titlecategory={DataProduct.Titlecategory}
                         Titleproduct={DataProduct.Titleproduct}
-                        price={DataProduct.price}
-                    />
+                        price={DataProduct.price} />
                 ))}
             </div>
 

@@ -8,7 +8,7 @@ interface CardProps {
     Titlecategory: string;
     Titleproduct: string;
     price: number;
-    isOnSale: boolean;
+    // isOnSale: boolean;
 }
 
 const handleAddtocart = () => {
@@ -16,7 +16,7 @@ const handleAddtocart = () => {
 }
 
 
-const Cardproduct: React.FC<CardProps> = ({ imageURL, Titlecategory, Titleproduct, price, isOnSale }) => {
+const Cardproduct: React.FC<CardProps> = ({ imageURL, Titlecategory, Titleproduct, price }) => {
     // bắt sự kiện theo dỗi hover 
 
     return (
@@ -30,14 +30,14 @@ const Cardproduct: React.FC<CardProps> = ({ imageURL, Titlecategory, Titleproduc
                     height={201}
                     className="object-cover w-full h-full transition-transform duration-300 ease-in-out transform hover:scale-110" // Thêm lớp để đảm bảo hình ảnh chiếm toàn bộ không gian
                 />
-                {isOnSale &&
+                {/* {isOnSale &&
                     (
                         <div className="absolute top-2 right-2  text-black px-2 py-1 rounded-md font-bold">
                             Sale
                         </div>
                     )
 
-                }
+                } */}
             </div>
             <div className="p-4">
                 <h2 className="text-lg font-bold text-gray-900">{Titlecategory}</h2>

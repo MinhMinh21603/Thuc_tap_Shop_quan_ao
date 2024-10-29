@@ -1,18 +1,22 @@
-import Slideshow from "./_components/banner/Slideshow";
-import Banner from "./_components_Tnhan/Banner";
-import Bannerr from "./_components_Tnhan/Bannerr";
-import Blog from "./_components_Tnhan/Blog";
-import Page_outsale from './_components_MInh/page'
-import Page_product_Home from "./components_Phuc/page";
+import React, { Suspense, lazy } from 'react';
+
+// Lazy load các component 
+const Slideshow = lazy(() => import("./_components/banner/Slideshow"));
+const Banner = lazy(() => import("./_components_Tnhan/Banner"));
+const Bannerr = lazy(() => import("./_components_Tnhan/Bannerr"));
+const Blog = lazy(() => import("./_components_Tnhan/Blog"));
+const PageOutsale = lazy(() => import('./_components_MInh/page'));
+const PageProductHome = lazy(() => import("./components_Phuc/page"));
+
 export default function Home() {
   return (
-    <>
-      <Slideshow></Slideshow>
-      <Bannerr></Bannerr>
-      <Banner></Banner>
-      <Page_product_Home />
-      <Page_outsale />
-      <Blog></Blog>
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Slideshow />
+      <Bannerr />
+      <Banner />
+      <PageProductHome />
+      <PageOutsale />
+      <Blog />
+    </Suspense>
   );
 }

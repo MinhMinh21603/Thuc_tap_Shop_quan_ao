@@ -8,8 +8,10 @@ const ProductDetail = () => {
         <div>
           <div className="relative bg-gray-300 w-[580px] h-[630px] flex items-center justify-center">
             <span className="text-gray-500">580x630</span>
-            <button className="absolute top-2 left-2 bg-backgroundPink text-white w-10 h-10 hover:bg-hoverColor rounded-full flex items-center justify-center">
-            <i className="fas fa-search"></i>
+            <button className="absolute top-2 left-2 bg-backgroundPink text-white w-10 h-10 hover:bg-hoverColor rounded-full flex items-center justify-center"
+              aria-label='search'
+            >
+              <i className="fas fa-search"></i>
             </button>
           </div>
           {/* Thumbnails */}
@@ -48,6 +50,7 @@ const ProductDetail = () => {
                 <button
                   key={color}
                   className={`w-8 h-8 rounded-full border border-gray-300 ${color === 'pink' ? 'bg-pink-300' : 'bg-gray-400'}`}
+                  aria-label={color}
                 ></button>
               ))}
             </div>
@@ -77,6 +80,7 @@ const ProductDetail = () => {
                 value="1"
                 className="w-10 py-1 text-center border border-gray-300"
                 readOnly
+
               />
               <button className="px-2 py-1 border border-gray-300 bg-gray-200 rounded-tr-2xl rounded-br-2xl">+</button>
             </div>
@@ -84,7 +88,7 @@ const ProductDetail = () => {
               Add To Cart
             </button>
           </div>
-          
+
           <div className="mt-6">
             <button className="px-6 py-4 bg-backgroundPink hover:bg-hoverColor text-white rounded w-full">
               Buy it now
@@ -102,26 +106,26 @@ const ProductDetail = () => {
           {/* Social Share */}
           <div className="mt-4">
             <div className="flex items-center gap-4 mt-2">
-            <span className="font-semibold">Social Share:</span>
-                {['facebook', 'twitter', 'instagram', 'youtube'].map((icon) => (
-                    <a key={icon} href="#" className="text-gray-600">
-                    <button className="bg-backgroundPink text-white w-8 h-8 hover:bg-hoverColor rounded-full flex items-center justify-center">
-                        {icon === 'facebook' ? <i className="fab fa-facebook-f"></i> :
-                        icon === 'twitter' ? <i className="fab fa-twitter"></i> :
+              <span className="font-semibold">Social Share:</span>
+              {['facebook', 'twitter', 'instagram', 'youtube'].map((icon) => (
+                <a key={icon} href="#" className="text-gray-600">
+                  <button className="bg-backgroundPink text-white w-8 h-8 hover:bg-hoverColor rounded-full flex items-center justify-center">
+                    {icon === 'facebook' ? <i className="fab fa-facebook-f"></i> :
+                      icon === 'twitter' ? <i className="fab fa-twitter"></i> :
                         icon === 'instagram' ? <i className="fab fa-instagram"></i> :
-                        <i className="fab fa-youtube"></i>}
-                    </button>
-                    </a>
-                ))}
+                          <i className="fab fa-youtube"></i>}
+                  </button>
+                </a>
+              ))}
             </div>
           </div>
           <div className="mt-4">
-            <span className="font-semibold">Guaranteed Safe Checkout</span> 
+            <span className="font-semibold">Guaranteed Safe Checkout</span>
             <div
-                className="bg-gray-300 w-[355px] h-[28px] cursor-pointer flex mt-5 items-center justify-center"
-              >
-                <span className="text-gray-500">355x28</span>
-              </div>
+              className="bg-gray-300 w-[355px] h-[28px] cursor-pointer flex mt-5 items-center justify-center"
+            >
+              <span className="text-gray-500">355x28</span>
+            </div>
           </div>
         </div>
       </div>
