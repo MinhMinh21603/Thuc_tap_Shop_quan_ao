@@ -1,54 +1,148 @@
 // pages/newProducts.tsx
+"use client"
 import React from 'react';
+import Cart_product from '../Card_product/page';
 
-const products = [
-  { id: 1, name: 'Oversize Cotton Dress', price: 110, salePrice: 70, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+1' },
-  { id: 2, name: 'Boxy Denim Jacket', price: 120, salePrice: 80, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+2' },
-  { id: 3, name: 'Quilted Shoulder Bag', price: 115, salePrice: 75, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+3' },
-  { id: 4, name: 'High Ankle Jeans', price: 125, salePrice: 85, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+4' },
-  { id: 5, name: 'Square Shoulder Bag', price: 117, salePrice: 80, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+5' },
-  { id: 6, name: 'Oversize Cotton Dress', price: 110, salePrice: 70, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+6' },
-  { id: 7, name: 'Boxy Denim Jacket', price: 120, salePrice: 80, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+7' },
-  { id: 8, name: 'Quilted Shoulder Bag', price: 115, salePrice: 75, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+8' },
-  { id: 9, name: 'Boxy Denim Jacket', price: 120, salePrice: 80, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+9' },
-  { id: 10, name: 'Quilted Shoulder Bag', price: 115, salePrice: 75, rating: 5, image: 'https://via.placeholder.com/282x310?text=Product+10' }
-];
+const DataProduct = [
+  {
+    id: 1,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: true,
+    Ratingstart: 2
+  },
+  {
+    id: 2,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: true,
+    Ratingstart: 2
+  },
+  {
+    id: 3,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: true,
+    Ratingstart: 2
+  },
 
+  {
+    id: 4,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: false,
+    Ratingstart: 2
+  },
+  {
+    id: 5,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: true,
+    Ratingstart: 2
+  },
+  {
+    id: 6,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: false,
+    Ratingstart: 2
+  },
+  {
+    id: 7,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: false,
+    Ratingstart: 2
+  },
+  {
+    id: 8,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: false,
+    Ratingstart: 2
+  },
+  {
+    id: 9,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: false,
+    Ratingstart: 2
+  },
+  {
+    id: 10,
+    imageURL: 'https://i.pinimg.com/564x/34/ec/5c/34ec5c4a7cb98abdcaeca4dd2aa5bd84.jpg',
+    Titlecategory: 'jean,ngắn',
+    Titleproduct: 'quần jean hook',
+    price: 19000,
+    isOnSale: false,
+    Ratingstart: 2
+  },
+
+
+]
 const NewProducts = () => {
+  // const [products] = useState(0);
+  const ItemStoShow = 5;
+  // tính tổng số sản phẩm trên 1 hàng 
+  const totalProduct = Math.ceil(DataProduct.length / ItemStoShow);
   return (
     <div className="container mx-auto p-4">
-      <div className="text-center mb-8">
+      <div className=" w-full flex flex-col justify-center items-center mb-8">
         <h1 className="text-3xl font-bold">New Products</h1>
+        <div className='w-[174px] h-2 bg-gray-500 rounded-lg mt-4'></div>
         <div className="mt-4">
-  <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
-    Featured
-  </button>
-  <button className="bg-gray-200 text-black py-2 px-4 rounded ml-2 hover:bg-gray-400 transition duration-300">
-    Trending
-  </button>
-  <button className="bg-gray-200 text-black py-2 px-4 rounded ml-2 hover:bg-gray-400 transition duration-300">
-    New Arrival
-  </button>
-</div>
+          <button
+            type='button'
+            className=" text-black py-2 px-4 rounded font-bold hover:text-pink-700 transition duration-300">
+            Featured
+          </button>
+          <button
+            type='button'
+            className=" text-black py-2 px-4 rounded ml-2 font-bold hover:text-pink-700 transition duration-300">
+            Trending
+          </button>
+          <button
+            type='button'
+            className=" text-black py-2 px-4 rounded ml-2 font-bold hover:text-pink-700 transition duration-300">
+            New Arrival
+          </button>
+        </div>
 
       </div>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 justify-items-center pb-20">
-        {products.map((product) => (
-          <div key={product.id} className="border p-4 rounded-lg shadow-lg">
-            <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4" />
-            <h2 className="text-xl font-bold">{product.name}</h2>
-            <div className="text-lg text-gray-700">
-              <span className="line-through">${product.price}</span> <span className="text-red-500">${product.salePrice}</span>
-            </div>
-            <div className="flex items-center mt-2">
-              <div className="flex text-yellow-500">
-                {'★'.repeat(product.rating)}
-              </div>
-            </div>
-            <div className="mt-4 flex justify-between">
-              <button className="bg-green-500 text-white py-2 px-4 rounded">Add to Cart</button>
-              <button className="bg-gray-500 text-white py-2 px-4 rounded">Wishlist</button>
-            </div>
+      <div className="container mx-auto flex flex-col  gap-10 justify-items-center pb-20">
+        {[...Array(totalProduct)].map((_, index) => (
+          <div key={index} className="flex gap-4">
+            {/*logic index = 0 <= 6  thì tăng lên 1 sản phẩm hiện thị  */}
+            {DataProduct.slice(index * ItemStoShow, (index + 1) * ItemStoShow).map(DataProduct => (
+              <Cart_product
+                key={DataProduct.id}
+                imageURL={DataProduct.imageURL}
+                Titlecategory={DataProduct.Titlecategory}
+                Titleproduct={DataProduct.Titleproduct}
+                price={DataProduct.price}
+                saleActive={DataProduct.isOnSale}
+                Ratingstart={DataProduct.Ratingstart}
+              />
+            ))}
+
           </div>
         ))}
       </div>

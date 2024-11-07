@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import '../style/global.css'
+import '../styles/globals.css'
 import StarIcon from '@mui/icons-material/Star';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import VisibilityIcon from '@mui/icons-material/Visibility';

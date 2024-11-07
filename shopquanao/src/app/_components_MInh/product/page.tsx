@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import '../style/global.css'
 import Pageproduct from '../card/page';
@@ -12,7 +12,20 @@ const handleChange = () => {
     console.log("hello");
 }
 const Product = () => {
+
     const [selectButton, setSelectButton] = useState('button_list');
+    const [isSaleActive, setSaleActive] = useState(false);
+
+    // sử dụng useeffect để tự động cập nhật 
+    useEffect(() => {
+        // thay đổi trạng thái 
+        const timer = setTimeout(() => {
+            setSaleActive(!isSaleActive);
+        }, 5000);
+        // don5 dẹp timer
+
+        return () => clearTimeout(timer);
+    }, [isSaleActive]);
     const DataProduct = [
         {
             id: 1,
@@ -22,6 +35,7 @@ const Product = () => {
             Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: true,
+            Ratingstart: 2,
         },
         {
             id: 2,
@@ -31,6 +45,7 @@ const Product = () => {
             Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: true,
+            Ratingstart: 2,
         },
         {
             id: 3,
@@ -40,6 +55,7 @@ const Product = () => {
             Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: true,
+            Ratingstart: 2,
         },
 
         {
@@ -50,6 +66,7 @@ const Product = () => {
             Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: false,
+            Ratingstart: 2,
         },
         {
             id: 5,
@@ -59,9 +76,11 @@ const Product = () => {
             Titlename: 'jean nhap khau tu trung quoc',
             price: 19000,
             isOnSale: true,
+            Ratingstart: 2,
         }
 
     ]
+
     return (
         <div>
             < header >
@@ -101,6 +120,7 @@ const Product = () => {
                     {/* Nút list và nút Gird*/}
                     <div className='flex items-center space-x-3 '>
                         <button
+                            type='button'
                             id='button_list'
                             value={'button_list'}
                             className={`p-2 border transition  ${selectButton === "button_list" ? 'border-pink-700 bg-white text-pink-700' : 'border-gray-200 bg-white text-black'}`}
@@ -112,6 +132,7 @@ const Product = () => {
                         </button>
 
                         <button
+                            type='button'
                             id='button_grid'
                             value={'button_grid'}
                             className={`p-2 border ${selectButton === "button_grid" ? 'border-pink-700 bg-white text-pink-700' : 'border-gray-200 bg-white text-black'}`}
@@ -147,6 +168,8 @@ const Product = () => {
                                 Titlecategory={DataProduct.Titlecategory}
                                 Titleproduct={DataProduct.Titleproduct}
                                 price={DataProduct.price}
+                                saleActive={DataProduct.isOnSale}
+                                Ratingstart={DataProduct.Ratingstart}
                             />
                         )}
                     </div>

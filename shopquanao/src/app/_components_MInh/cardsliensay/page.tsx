@@ -3,13 +3,13 @@ import React from 'react'
 // import { useState } from 'react';
 import Image from 'next/image';
 import '../style/global.css'
-
+import StarIcon from '@mui/icons-material/Star';
 interface CardProps {
-    // idCard: number;
+    idCard: number;
     imageURl: string;
     titleNameSlien: string;
     titleProductSlien: string;
-    // startrating: number;
+    rating: number;
 
 }
 // import { render } from '@testing-library/react'
@@ -20,7 +20,7 @@ interface CardProps {
 // import { rootReducer } from './store/reducers/rootReducer'
 // import { initialState } from './store/reducers/rootReducer'
 
-const Cart_sliensay: React.FC<CardProps> = ({ imageURl, titleNameSlien, titleProductSlien }) => {
+const Cart_sliensay: React.FC<CardProps> = ({ imageURl, titleNameSlien, titleProductSlien, rating }) => {
 
     // // lấy rating hiện tại từ mock 
     // const [rating, setrating] = useState(() => {
@@ -46,17 +46,12 @@ const Cart_sliensay: React.FC<CardProps> = ({ imageURl, titleNameSlien, titlePro
                 <p className=' mx-auto text-xs text-gray-500'>fashion</p>
                 <p className='pt-2 w-30 text-xs text-gray-500 '>{titleProductSlien}</p>
             </div>
-
-
-            {/* 
-            tạo sao hiện tại chưa làm vì đang bị rối 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-center mt-4">
-                <svg className="w-1 h-1 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 .587l3.668 7.568L24 9.75l-6 5.865L19.335 24 12 19.902 4.665 24 6 15.615 0 9.75l8.332-1.595z" />
-                </svg>
-
-                <span className="ml-2 text-gray-600">(4.0)</span>
-            </div> */}
+            {/* tạo sao theo đánh giá*/}
+            <div className='flex'>
+                {Array.from({ length: 5 }, (_, index) => (
+                    <span key={index} className={`text-2x1 ${index < rating ? 'text-yellow-500' : 'text-gray-300'}`} ><StarIcon /></span>
+                ))}
+            </div>
 
         </div>
     )
