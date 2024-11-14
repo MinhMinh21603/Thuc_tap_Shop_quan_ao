@@ -9,22 +9,22 @@ const NavBar = () => {
         {/* Menu */}
         <nav className="container flex justify-between w-1/2">
           <div className="relative group">
-            <a href="/" className="text-grayColor hover:text-backgroundPink">Home</a>
+            <Link href="/" className="text-grayColor hover:text-backgroundPink">Home</Link>
           </div>
           <div className="relative group">
-            <a href="/product-home" className="text-grayColor hover:text-backgroundPink">Shop</a>
+            <Link href="/product-home" className="text-grayColor hover:text-backgroundPink">Shop</Link>
           </div>
           <div className="relative group">
-            <Link href={'/pages/about-us'} className="text-grayColor hover:text-backgroundPink">About US</Link>
+            <Link href={'/about-us'} className="text-grayColor hover:text-backgroundPink">About US</Link>
           </div>
           <div className="relative group">
-            <a href="/blog" className="text-grayColor hover:text-backgroundPink">Blog</a>
+            <Link href={'/blog'} className="text-grayColor hover:text-backgroundPink">Blog</Link>
           </div>
           <div className="relative group">
-            <a href="/product-home" className="text-grayColor hover:text-backgroundPink">Categories</a>
+            <Link href="/product-home" className="text-grayColor hover:text-backgroundPink">Categories</Link>
           </div>
           <div className="relative group">
-            <a href="/contact" className="text-grayColor hover:text-backgroundPink">Contact</a>
+            <Link href="/contact" className="text-grayColor hover:text-backgroundPink">Contact</Link>
           </div>
         </nav>
 

@@ -20,7 +20,10 @@ const config: Config = {
       },
       width: {
         searchBar: "550px",
-      }
+      },
+      screens: {
+        'xs': '575px',
+      },
     },
   },
   plugins: [],

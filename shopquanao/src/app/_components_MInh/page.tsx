@@ -146,13 +146,13 @@ export default function Home() {
 
     return (
         // Our Best Seller
-        <div className='w-screen px-11'>
+        <div className='container mx-auto'>
             <div className='w-full  bg-white  justify-center items-start p-4'>
                 <h2 className='text-center font-bold text-2xl'>Our Best Seller</h2>
                 <hr className='my-4 h-1 w-40 border-gray-500 mx-auto' />
             </div>
 
-            <div className=" container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 justify-items-center pb-20 ">
+            <div className=" grid grid-cols-1 md:grid-cols-4 gap-10 justify-items-center pb-20 ">
                 {DataProduct.slice(startIndex, startIndex + itemsToShow).map(DataProduct => (
                     <CardProduct
                         key={DataProduct.id}
@@ -169,13 +169,13 @@ export default function Home() {
             </div>
 
 
-            <div className=' w-full h-40 grid grid-cols-1 md:grid-cols-2 gap-20  py-5'>
-                <div className='relative w-full  md:w-746 h-281 bg-cover bg-center flex flex-col p-6  ' style={{ backgroundImage: 'url("https://i.pinimg.com/736x/7e/03/3e/7e033e5cc63015a919ebf761fd351dc6.jpg")' }}>
+            <div className='w-full h-40 grid grid-cols-1 md:grid-cols-2 gap-20 py-5'>
+                <div className='relative w-full md:w-[746px] h-[281px] bg-cover bg-center flex flex-col p-6' style={{ backgroundImage: 'url("https://i.pinimg.com/736x/7e/03/3e/7e033e5cc63015a919ebf761fd351dc6.jpg")' }}>
                     <h3 className='text-lg font-bold mb-4 text-gray-400'>Pick Your Items</h3>
                     <h3 className='text-2xl font-bold mb-2'>Up to 25% Off Order Now</h3>
                     <a href="#" className='text-gray-400 hover:underline hover:text-pink-700'>Show now</a>
                 </div>
-                <div className='relative w-full  md:w-746 h-281 bg-cover bg-center flex flex-col p-6  ' style={{ backgroundImage: 'url("https://i.pinimg.com/736x/7e/03/3e/7e033e5cc63015a919ebf761fd351dc6.jpg")' }}>
+                <div className='relative w-full md:w-[746px] h-[281px] bg-cover bg-center flex flex-col p-6' style={{ backgroundImage: 'url("https://i.pinimg.com/736x/7e/03/3e/7e033e5cc63015a919ebf761fd351dc6.jpg")' }}>
                     <h3 className='text-lg font-bold mb-4 text-gray-400'>Pick Your Items</h3>
                     <h3 className='text-2xl font-bold mb-2'>Up to 25% Off Order Now</h3>
                     <a href="#" className='text-gray-400 hover:underline hover:text-pink-700'>Show now</a>
@@ -183,7 +183,7 @@ export default function Home() {
             </div>
 
             <div >
-                <div className='relative w-full  bg-white  justify-center items-start pt-20'>
+                <div className='w-full  bg-white  justify-center items-start pt-20 mt-32'>
                     <h2 className='text-center font-bold text-2xl'>Our Best Seller</h2>
                     <hr className='my-4 h-1 w-40 border-gray-500 mx-auto' />
                 </div>
@@ -204,6 +204,7 @@ export default function Home() {
                                 titleNameSlien={item.titleNameSlien}
                                 titleProductSlien={item.titleProductSlien}
                                 rating={item.rating}
+                                className="w-[32%] md:w-[48%] sm:w-full mx-2"
                             />
 
                         ))}
