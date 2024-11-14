@@ -1,6 +1,6 @@
 // pages/newProducts.tsx
 "use client"
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Cart_product from '../Card_product/page';
 
 const DataProduct = [
@@ -99,50 +99,69 @@ const DataProduct = [
 
 ]
 const NewProducts = () => {
-  // const [products] = useState(0);
-  const ItemStoShow = 5;
-  // tính tổng số sản phẩm trên 1 hàng 
+  const [ItemStoShow, setItemStoShow] = useState(5); // Mặc định là 5 sản phẩm trên một hàng
+
+  // Tính tổng số hàng cần để hiển thị tất cả sản phẩm
   const totalProduct = Math.ceil(DataProduct.length / ItemStoShow);
+
+  // Sử dụng useEffect để lắng nghe sự thay đổi kích thước màn hình và cập nhật số sản phẩm hiển thị
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1550) {
+        setItemStoShow(4); // Hiển thị 4 sản phẩm mỗi hàng nếu chiều rộng màn hình dưới 1550px
+      } else {
+        setItemStoShow(5); // Hiển thị 5 sản phẩm mỗi hàng nếu chiều rộng màn hình trên 1550px
+      }
+    };
+
+    // Gọi hàm để kiểm tra kích thước ngay khi component được render
+    handleResize();
+
+    // Lắng nghe sự kiện thay đổi kích thước màn hình
+    window.addEventListener('resize', handleResize);
+
+    // Gỡ sự kiện khi component unmount để tránh rò rỉ bộ nhớ
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="container mx-auto p-4">
-      <div className=" w-full flex flex-col justify-center items-center mb-8">
+    <div className="container mx-auto py-4">
+      <div className="w-full flex flex-col justify-center items-center mb-8">
         <h1 className="text-3xl font-bold">New Products</h1>
-        <div className='w-[174px] h-2 bg-gray-500 rounded-lg mt-4'></div>
+        <div className="w-[174px] h-2 bg-gray-500 rounded-lg mt-4"></div>
         <div className="mt-4">
           <button
             type='button'
-            className=" text-black py-2 px-4 rounded font-bold hover:text-pink-700 transition duration-300">
+            className="text-black py-2 px-4 rounded font-bold hover:text-pink-700 transition duration-300">
             Featured
           </button>
           <button
             type='button'
-            className=" text-black py-2 px-4 rounded ml-2 font-bold hover:text-pink-700 transition duration-300">
+            className="text-black py-2 px-4 rounded ml-2 font-bold hover:text-pink-700 transition duration-300">
             Trending
           </button>
           <button
             type='button'
-            className=" text-black py-2 px-4 rounded ml-2 font-bold hover:text-pink-700 transition duration-300">
+            className="text-black py-2 px-4 rounded ml-2 font-bold hover:text-pink-700 transition duration-300">
             New Arrival
           </button>
         </div>
-
       </div>
-      <div className="container mx-auto flex flex-col  gap-10 justify-items-center pb-20">
+
+      <div className="container mx-auto pb-20">
         {[...Array(totalProduct)].map((_, index) => (
-          <div key={index} className="flex gap-4">
-            {/*logic index = 0 <= 6  thì tăng lên 1 sản phẩm hiện thị  */}
-            {DataProduct.slice(index * ItemStoShow, (index + 1) * ItemStoShow).map(DataProduct => (
+          <div key={index} className="flex flex-wrap justify-between">
+            {DataProduct.slice(index * ItemStoShow, (index + 1) * ItemStoShow).map(product => (
               <Cart_product
-                key={DataProduct.id}
-                imageURL={DataProduct.imageURL}
-                Titlecategory={DataProduct.Titlecategory}
-                Titleproduct={DataProduct.Titleproduct}
-                price={DataProduct.price}
-                saleActive={DataProduct.isOnSale}
-                Ratingstart={DataProduct.Ratingstart}
+                key={product.id}
+                imageURL={product.imageURL}
+                Titlecategory={product.Titlecategory}
+                Titleproduct={product.Titleproduct}
+                price={product.price}
+                saleActive={product.isOnSale}
+                Ratingstart={product.Ratingstart}
               />
             ))}
-
           </div>
         ))}
       </div>
