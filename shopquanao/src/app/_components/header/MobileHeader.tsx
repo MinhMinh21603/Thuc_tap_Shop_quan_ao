@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import LanguageDropdown from './LanguageDropdown';
 import CurrencyDropdown from './CurrencyDropdown';
 
@@ -86,13 +87,15 @@ const MobileHeader = () => {
         </div>
         
         {/* Logo */}
-        <Image
+         <Link href="/">
+         <Image
           src="/img/logo/logo.png"
           alt="Logo"
           width={200}
           height={200}
           className="w-[150px] md:w-[200px] h-auto"
         />
+         </Link>
         
         {/* Giỏ hàng và người dùng */}
         <div className="flex items-center space-x-6">
@@ -117,13 +120,15 @@ const MobileHeader = () => {
         >
           <div className="p-5">
             <div className="flex justify-between">
+              <Link href="/" onClick={closeMenu}>
               <Image
                 src="/img/logo/logo.png"
                 alt="Logo"
                 width={140}
                 height={80}
                 className="w-[150px] md:w-[150px] h-9"
-              />
+              /></Link>
+             
               <button
                 onClick={toggleMenu}
                 className="text-black focus:outline-none mb-4"
@@ -147,12 +152,11 @@ const MobileHeader = () => {
 
             {/* Navigation menu items */}
             <ul className="space-y-4 my-3 text-xl font-light">
-              <li><a href="#" className="text-black hover:text-backgroundPink">Home</a></li>
-              <li><a href="#" className="text-black hover:text-backgroundPink">Shop</a></li>
-              <li><a href="#" className="text-black hover:text-backgroundPink">Blog</a></li>
-              <li><a href="#" className="text-black hover:text-backgroundPink">Pages</a></li>
-              <li><a href="#" className="text-black hover:text-backgroundPink">About</a></li>
-              <li><a href="#" className="text-black hover:text-backgroundPink">Contact</a></li>
+              <li><Link href="/" onClick={closeMenu} className="text-black hover:text-backgroundPink">Home</Link></li>
+              <li><Link href="/product-home" onClick={closeMenu} className="text-black hover:text-backgroundPink">Shop</Link></li>
+              <li><Link href="/blog" onClick={closeMenu} className="text-black hover:text-backgroundPink">Blog</Link></li>
+              <li><Link href="about-us" onClick={closeMenu} className="text-black hover:text-backgroundPink">About Us</Link></li>
+              <li><Link href="/contact" onClick={closeMenu} className="text-black hover:text-backgroundPink">Contact</Link></li>
             </ul>
 
             {/* User login/register */}
