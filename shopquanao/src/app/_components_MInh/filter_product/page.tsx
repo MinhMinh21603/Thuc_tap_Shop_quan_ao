@@ -1,12 +1,18 @@
 'use client'
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
-
+// tạo database 
+import mockdatafiler from './data_filter.json';
+import { motion } from 'framer-motion';
+import ClearIcon from '@mui/icons-material/Clear';
 const Filterproduct = () => {
     //khai báo 2 kiểu không thì báo lỗi 
     const [open, setOpen] = useState<number | null>(null);
-    // hiệu ứng mở thêm lựa chọn
-    const listRef = useRef(null);
+
+
+
+    // khai báo database
+    const data_categories = mockdatafiler.categories;
 
     const handleclick = (id: number) => {
         // setOpen(!open);
@@ -16,313 +22,90 @@ const Filterproduct = () => {
             console.log(`xóa id : ${open}`);
 
         }
-       
+
         setOpen(open === id ? null : id);
     }
     return (
         <div className='w-[320px] border border-black'>
             <button
-                type='button'>
+                type='button'
+                className=' w-auto border border-gray-300 m-6 px-5 py-1 font-bold '
+            >
+                <ClearIcon
+                    className='pr-1' />
                 close
             </button>
 
             {/*categories*/}
             <div className='grid gird-col-1 gap-4 border border-black  items-center p-4'>
-                <h2>category</h2>
+                <h3 className='font-bold text-2xl'>Category</h3>
                 <hr />
 
                 {/*list 1*/}
-                <div className='p-2  rounded-lg shadow-md cursor-pointer'
-                    onClick={() => handleclick(1)}
-                >
-                    <div className='flex items-center gap-4 justify-between'>
-                        <div className='flex items-center gap-4' >
-                            <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                alt="image_category"
-                                width={50}
-                                height={200} />
-                            <span className="text-gray-800 font-medium">Denim Jacket</span>
+                {data_categories.map(data_categories => (
+
+                    <div key={data_categories.id}
+                        className='p-2  rounded-lg shadow-md cursor-pointer'
+                        onClick={() => handleclick(data_categories.id)}
+                    >
+                        <div className='flex items-center gap-4 justify-between'>
+                            <div className='flex items-center gap-4' >
+                                <Image src={data_categories.image}
+                                    alt="image_category"
+                                    width={50}
+                                    height={200} />
+                                <span className="text-gray-800 font-medium">{data_categories.name}</span>
+                            </div>
+                            {/* lệnh tạo mũi tên hướng lên */}
+                            <svg
+                                // tạo hiệu ứng ngược chiều
+                                // duration là hiệu ứng thời gian xoay
+                                className={`w-6 h-6 transform transition-transform duration-500 ${open == data_categories.id ? 'rotate-180' : ''}`}
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    strokeLinecap="round" // làm tròn đầu các góc
+                                    strokeLinejoin="round" // làm tròn các đường giao nhau 
+                                    strokeWidth={2} // độ dày 
+                                    d="M19 9l-7 7-7-7" // vị trí tọa độ 
+                                />
+                            </svg>
                         </div>
-                        {/* lệnh tạo mũi tên hướng lên */}
-                        <svg
-                            // tạo hiệu ứng ngược chiều
-                            // duration là hiệu ứng thời gian xoay
-                            className={`w-6 h-6 transform transition-transform duration-500 ${open == 1 ? 'rotate-180' : ''}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round" // làm tròn đầu các góc
-                                strokeLinejoin="round" // làm tròn các đường giao nhau 
-                                strokeWidth={2} // độ dày 
-                                d="M19 9l-7 7-7-7" // vị trí tọa độ 
-                            />
-                        </svg>
+                        {open === data_categories.id && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }} // Vị trí đầu
+                                animate={{ opacity: 1, height: 'auto' }} // Vị trí cuối
+                                exit={{ opacity: 0, height: 0 }} // Vị trí khi thu về
+                                transition={{ duration: 1, ease: "easeInOut" }} // Thời gian chuyển đổi
+                                className={`overflow-hidden`}
+                            >
+                                <hr className="my-2 border-gray-300" />
+
+                                {data_categories.subItems.map((subItem, index) => (
+                                    <motion.div
+                                        key={subItem.id}
+                                        initial={{ opacity: 0, y: 20 }} // Vị trí đầu cho từng mục
+                                        animate={{ opacity: 1, y: 0 }} // Vị trí cuối cho từng mục
+                                        exit={{ opacity: 0, y: 20 }} // Vị trí khi thu về cho từng mục
+                                        transition={{
+                                            duration: 0.3, // Thời gian chuyển đổi cho mỗi mục
+                                            delay: index * 0.1, // Độ trễ để tạo hiệu ứng xuất hiện lần lượt
+                                            ease: "easeInOut"
+                                        }}
+                                        className={`flex items-center gap-4 pt-4`}
+                                    >
+                                        <Image src={subItem.image} alt="image_category" width={50} height={200} />
+                                        <span className="text-gray-800 font-medium">{subItem.name}</span>
+                                    </motion.div>
+                                ))}
+
+                            </motion.div>
+                        )}
                     </div>
-                    {open && (
-                        <div
-                            ref={listRef}
-                            className={`overflow-hidden transition-all duration-500 ${open == 1 ? 'max-h-[500]' : 'max-h-0'}`}>
-                            <ul>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 1 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 1 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 1 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                            </ul>
-                        </div>
-                    )}
-                </div>
-                {/*list 2*/}
-                <div className='p-2  rounded-lg shadow-md cursor-pointer'
-                    onClick={() => handleclick(2)}
-                >
-                    <div className='flex items-center gap-4 justify-between'>
-                        <div className='flex items-center gap-4' >
-                            <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                alt="image_category"
-                                width={50}
-                                height={200} />
-                            <span className="text-gray-800 font-medium">Denim Jacket</span>
-                        </div>
-                        {/* lệnh tạo mũi tên hướng lên */}
-                        <svg
-                            // tạo hiệu ứng ngược chiều
-                            // duration là hiệu ứng thời gian xoay
-                            className={`w-6 h-6 transform transition-transform duration-500 ${open == 2 ? 'rotate-180' : ''}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round" // làm tròn đầu các góc
-                                strokeLinejoin="round" // làm tròn các đường giao nhau 
-                                strokeWidth={2} // độ dày 
-                                d="M19 9l-7 7-7-7" // vị trí tọa độ 
-                            />
-                        </svg>
-                    </div>
-                    {open && (
-                        <div className={`overflow-hidden transition-all duration-500 ${open == 2 ? 'max-h-[500]' : 'max-h-0'}`}>
-                            <ul>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 2 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 2 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 2 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                            </ul>
-                        </div>
-                    )}
-                </div>
-                {/*list 3*/}
-                <div className='p-2  rounded-lg shadow-md cursor-pointer'
-                    onClick={() => handleclick(3)}
-                >
-                    <div className='flex items-center gap-4 justify-between'>
-                        <div className='flex items-center gap-4' >
-                            <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                alt="image_category"
-                                width={50}
-                                height={200} />
-                            <span className="text-gray-800 font-medium">Denim Jacket</span>
-                        </div>
-                        {/* lệnh tạo mũi tên hướng lên */}
-                        <svg
-                            // tạo hiệu ứng ngược chiều
-                            // duration là hiệu ứng thời gian xoay
-                            className={`w-6 h-6 transform transition-transform duration-500 ${open == 3 ? 'rotate-180' : ''}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round" // làm tròn đầu các góc
-                                strokeLinejoin="round" // làm tròn các đường giao nhau 
-                                strokeWidth={2} // độ dày 
-                                d="M19 9l-7 7-7-7" // vị trí tọa độ 
-                            />
-                        </svg>
-                    </div>
-                    {open && (
-                        <div className={`overflow-hidden transition-all duration-500 ${open == 3 ? 'max-h-[500]' : 'max-h-0'}`}>
-                            <ul>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 3 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 3 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 3 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                            </ul>
-                        </div>
-                    )}
-                </div>
-                {/*list 4*/}
-                <div className='p-2  rounded-lg shadow-md cursor-pointer'
-                    onClick={() => handleclick(4)}
-                >
-                    <div className='flex items-center gap-4 justify-between'>
-                        <div className='flex items-center gap-4' >
-                            <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                alt="image_category"
-                                width={50}
-                                height={200} />
-                            <span className="text-gray-800 font-medium">Denim Jacket</span>
-                        </div>
-                        {/* lệnh tạo mũi tên hướng lên */}
-                        <svg
-                            // tạo hiệu ứng ngược chiều
-                            // duration là hiệu ứng thời gian xoay
-                            className={`w-6 h-6 transform transition-transform duration-500 ${open == 4 ? 'rotate-180' : ''}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round" // làm tròn đầu các góc
-                                strokeLinejoin="round" // làm tròn các đường giao nhau 
-                                strokeWidth={2} // độ dày 
-                                d="M19 9l-7 7-7-7" // vị trí tọa độ 
-                            />
-                        </svg>
-                    </div>
-                    {open && (
-                        <div className={`overflow-hidden transition-all duration-500 ${open == 4 ? 'max-h-[500]' : 'max-h-0'}`}>
-                            <ul>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 4 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 4 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 4 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                            </ul>
-                        </div>
-                    )}
-                </div>
-                {/*list 5*/}
-                <div className='p-2  rounded-lg shadow-md cursor-pointer'
-                    onClick={() => handleclick(5)}
-                >
-                    <div className='flex items-center gap-4 justify-between'>
-                        <div className='flex items-center gap-4' >
-                            <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                alt="image_category"
-                                width={50}
-                                height={200} />
-                            <span className="text-gray-800 font-medium">Denim Jacket</span>
-                        </div>
-                        {/* lệnh tạo mũi tên hướng lên */}
-                        <svg
-                            // tạo hiệu ứng ngược chiều
-                            // duration là hiệu ứng thời gian xoay
-                            className={`w-6 h-6 transform transition-transform duration-500 ${open == 5 ? 'rotate-180' : ''}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round" // làm tròn đầu các góc
-                                strokeLinejoin="round" // làm tròn các đường giao nhau 
-                                strokeWidth={2} // độ dày 
-                                d="M19 9l-7 7-7-7" // vị trí tọa độ 
-                            />
-                        </svg>
-                    </div>
-                    {open && (
-                        <div className={`overflow-hidden transition-all duration-500 ${open == 5 ? 'max-h-[500]' : 'max-h-0'}`}>
-                            <ul>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 5 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 5 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                                <li className={` flex items-center gap-4 pt-4 transition-opacity duration-500 ${open == 5 ? 'opacity-1' : 'opacity-0'}`}>
-                                    <Image src="https://i.pinimg.com/564x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg"
-                                        alt="image_category"
-                                        width={50}
-                                        height={200} />
-                                    <span className="text-gray-800 font-medium">Denim Jacket</span>
-                                </li>
-                            </ul>
-                        </div>
-                    )}
-                </div>
+                ))}
             </div>
 
 

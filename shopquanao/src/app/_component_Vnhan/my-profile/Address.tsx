@@ -5,7 +5,7 @@ const Address = () => {
     <div className="w-3/4 pl-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold">Addresses</h2>
-        <button className="bg-pink-500 text-white px-4 py-2 rounded-md">Add a new address</button>
+        <button type='button' className="bg-pink-500 text-white px-4 py-2 rounded-md">Add a new address</button>
       </div>
       <div className="border p-4 rounded-md">
         <h3 className="font-bold mb-4">Default</h3>

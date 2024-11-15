@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faPlay } from '@fortawesome/free-solid-svg-icons';
-// import Image from 'next/image';
+//  import Image from 'next/image';
 import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
 const DealsOfTheDay = () => {
   // const calculateTimeLeft = () => {
   //   const year = new Date().getFullYear();
-  //   const difference = +new Date(`12/31/${year}`) - +new Date();
+    // const difference = +new Date(`12/31/${year}`) - +new Date();
   //   const timeLeft: any = {};
 
   //   if (difference > 0) {

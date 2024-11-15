@@ -1,0 +1,164 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Denim Jackets",
+            "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg",
+            "subItems": [
+                {
+                    "id": 1,
+                    "name": "Light Blue Denim Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 2,
+                    "name": "Dark Blue Denim Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 3,
+                    "name": "Ripped Denim Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 4,
+                    "name": "Black Denim Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 5,
+                    "name": "White Denim Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Leather Jackets",
+            "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg",
+            "subItems": [
+                {
+                    "id": 1,
+                    "name": "Brown Leather Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 2,
+                    "name": "Black Leather Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 3,
+                    "name": "Biker Leather Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 4,
+                    "name": "Long Leather Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 5,
+                    "name": "Suede Leather Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Winter Coats",
+            "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg",
+            "subItems": [
+                {
+                    "id": 1,
+                    "name": "Puffer Winter Coat",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 2,
+                    "name": "Wool Winter Coat",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 3,
+                    "name": "Trench Winter Coat",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 4,
+                    "name": "Parka Winter Coat",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 5,
+                    "name": "Peacoat",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Rain Jackets",
+            "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg",
+            "subItems": [
+                {
+                    "id": 1,
+                    "name": "Lightweight Rain Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 2,
+                    "name": "Waterproof Rain Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 3,
+                    "name": "Windbreaker Rain Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 4,
+                    "name": "Insulated Rain Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 5,
+                    "name": "Packable Rain Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Bomber Jackets",
+            "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg",
+            "subItems": [
+                {
+                    "id": 1,
+                    "name": "Classic Bomber Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 2,
+                    "name": "Flight Bomber Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 3,
+                    "name": "Hooded Bomber Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 4,
+                    "name": "Varsity Bomber Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                },
+                {
+                    "id": 5,
+                    "name": "Leather Bomber Jacket",
+                    "image": "https://i.pinimg.com/736x/c0/73/af/c073aff270c96180abe755e5cc7e3935.jpg"
+                }
+            ]
+        }
+    ]
+}
