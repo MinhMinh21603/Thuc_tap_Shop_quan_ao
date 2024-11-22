@@ -44,12 +44,12 @@ const CheckoutPage = () => {
             <input type="text" placeholder="Apartment, suite, etc. (optional)" className="p-3 border border-gray-300 rounded md:col-span-2" />
             <input type="text" placeholder="City" className="p-3 border border-gray-300 rounded md:col-span-2" />
             <div className="grid grid-cols-2 col-span-2 gap-4">
-              <select className="p-3 border border-gray-300 rounded">
-                <option>Country/region</option>
-                <option>India</option>
-                <option>United States</option>
-                <option>Canada</option>
-              </select>
+            <select className="p-3 border border-gray-300 rounded" name="country" title="Select a country" aria-label="Country selector">
+              <option>India</option>
+              <option>United States</option>
+              <option>Canada</option>
+            </select>
+
               <input type="text" placeholder="Postal code" className="p-3 border border-gray-300 rounded" />
             </div>
             <label className="flex items-center text-sm text-gray-600 md:col-span-2">
