@@ -5,9 +5,11 @@ interface Inputs {
   type: string;
   placeholder?: string;
   id?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField: React.FC<Inputs> = ({ name, type, placeholder, id }) => {
+const InputField: React.FC<Inputs> = ({ name, type, placeholder, id , value, onChange }) => {
   const isRadio = type === 'radio';
   const isCheckbox = type === 'checkbox';
 
@@ -23,6 +25,8 @@ const InputField: React.FC<Inputs> = ({ name, type, placeholder, id }) => {
             ? "p-[12px] border border-gray-300 rounded focus:border-[#ee2761] focus:outline-none"
             : "form-checkbox w-[18px] h-[18px] accent-[#ee2761]"
         }
+        onChange={onChange}
+        value={value}
       />
     </>
   );
