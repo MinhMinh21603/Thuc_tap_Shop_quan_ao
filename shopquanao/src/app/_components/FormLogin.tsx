@@ -4,6 +4,7 @@ import { useSetRecoilState } from 'recoil';
 import InputField from './InputField';
 import { ApiError, authState } from '../_recoil/atoms/userAtoms';
 import axios from 'axios';
+import Link from 'next/link';
 
 const FormLogin = () => {
   
@@ -45,8 +46,9 @@ const FormLogin = () => {
 
     try {
       const response = await axios.post('https://api-core.dsp.one/user/api/getUserByField', { email, password });
+      
       const user = response.data.user;
-
+      localStorage.setItem('user', user);
       setAuth({ isLoggedIn: true, user, loading: false, error: null });
       setEmail('');
       setPassword('');
@@ -96,9 +98,9 @@ const FormLogin = () => {
               <InputField type="checkbox" name="rememberMe" />
               <span className="text-sm text-gray-600 font-semibold">Remember me</span>
             </div>
-            <a href="#" className="text-[#ee2761] text-sm font-semibold">
+            <Link href="/auth/forgot-password" className="text-[#ee2761] text-sm font-semibold">
               Forgot Your Password?
-            </a>
+            </Link>
           </div>
 
           <button 

@@ -47,6 +47,7 @@ interface InputFieldItem {
 const inputsSection: InputFieldItem[] = [
     { type: 'text', name: 'username', placeholder: 'Username' },
     { type: 'text', name: 'email', placeholder: 'Email Address' },
+    { type: 'phone', name: 'phone', placeholder: 'Phone Number' },
     { type: 'password', name: 'password', placeholder: 'Password' },
     { type: 'password', name: 'confirmPassword', placeholder: 'Confirm Password' },
 ];

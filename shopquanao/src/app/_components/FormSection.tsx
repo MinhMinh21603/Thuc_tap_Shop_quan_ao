@@ -21,8 +21,9 @@ interface FormRegisterProps {
 }
 
 const FormSection: React.FC<FormRegisterProps> = ({ inputsSection, className, title, grow, titleMain, titleButton }) => {
-  const [username, setUsername] = useState(''); // Thêm state cho username
+  const [username, setUsername] = useState(''); 
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState(''); // Thêm state cho số điện thoại
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -31,6 +32,11 @@ const FormSection: React.FC<FormRegisterProps> = ({ inputsSection, className, ti
   const validateEmail = (email: string): boolean => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
+  };
+
+  const validatePhone = (phone: string): boolean => {
+    const phonePattern = /^\d{10,15}$/; // Kiểm tra số điện thoại từ 10 đến 15 chữ số
+    return phonePattern.test(phone);
   };
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -52,6 +58,14 @@ const FormSection: React.FC<FormRegisterProps> = ({ inputsSection, className, ti
       setErrorMessage('Email không hợp lệ.');
       return;
     }
+    if (!phone) {
+      setErrorMessage('Số điện thoại không được để trống.');
+      return;
+    }
+    if (!validatePhone(phone)) {
+      setErrorMessage('Số điện thoại không hợp lệ. Phải từ 10 đến 15 chữ số.');
+      return;
+    }
     if (!password) {
       setErrorMessage('Mật khẩu không được để trống.');
       return;
@@ -64,11 +78,13 @@ const FormSection: React.FC<FormRegisterProps> = ({ inputsSection, className, ti
     setAuth((prev) => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await axios.post('https://api-core.dsp.one/user/api/register', {
-        name: username,  // Gửi username
+      const response = await axios.post('https://api-core.dsp.one/api/auth/user/register', {
+        name: username,  
         email,
+        phone, 
         password,
         password_confirmation: confirmPassword,
+        customer_id: 1
       });
       
       const user = response.data.user;
@@ -76,6 +92,7 @@ const FormSection: React.FC<FormRegisterProps> = ({ inputsSection, className, ti
       // Reset các trường
       setUsername('');
       setEmail('');
+      setPhone(''); // Reset số điện thoại
       setPassword('');
       setConfirmPassword('');
       
@@ -116,12 +133,17 @@ const FormSection: React.FC<FormRegisterProps> = ({ inputsSection, className, ti
               value={
                 input.name === 'username' ? username : 
                 input.name === 'email' ? email : 
+                input.name === 'phone' ? phone : // Thêm xử lý cho số điện thoại
                 input.name === 'password' ? password : 
                 confirmPassword
               }
               onChange={(e) => {
                 if (input.name === 'username') setUsername(e.target.value);
                 if (input.name === 'email') setEmail(e.target.value);
+                if (input.name === 'phone') {
+                  const value = e.target.value.replace(/[^0-9]/g, ''); // Chỉ cho phép ký tự số
+                  setPhone(value); // Cập nhật số điện thoại
+                }
                 if (input.name === 'password') setPassword(e.target.value);
                 if (input.name === 'confirmPassword') setConfirmPassword(e.target.value);
               }}
