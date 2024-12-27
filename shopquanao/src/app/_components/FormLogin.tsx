@@ -33,19 +33,24 @@ const FormLogin = () => {
       setErrorMessage('Mật khẩu không được để trống.');
       return false;
     }
-    setErrorMessage(null); // Reset error message nếu validation thành công.
+    setErrorMessage(null); 
     return true;
   };
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!validateForm()) return; // Kiểm tra validation trước khi tiếp tục
+    if (!validateForm()) return;
 
     setAuth((prev) => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await axios.post('https://api-core.dsp.one/user/api/getUserByField', { email, password });
+      const response = await axios.post('/api/auth/user/getUserByField', { email, password }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      });
       
       const user = response.data.user;
       localStorage.setItem('user', user);
@@ -66,7 +71,7 @@ const FormLogin = () => {
         loading: false,
         error: errorMessage,
       }));
-      setErrorMessage(errorMessage); // Cập nhật thông báo lỗi
+      setErrorMessage(errorMessage);
     }
   };
 
@@ -105,7 +110,7 @@ const FormLogin = () => {
 
           <button 
             className={`bg-[#ee2761] ${(!email || !password) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#061738]'} transition-colors duration-300 text-white font-semibold py-[12px] rounded`}
-            disabled={!email || !password} // Vô hiệu hóa nút nếu các trường không hợp lệ
+            disabled={!email || !password} 
           >
             Login
           </button>
