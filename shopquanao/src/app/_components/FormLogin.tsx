@@ -6,10 +6,10 @@ import { ApiError, authState } from '../_recoil/atoms/userAtoms';
 import axios from 'axios';
 import Link from 'next/link';
 
-const FormLogin = () => {
+const FormLogin: React.FC = () => {
   
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
   const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
   const setAuth = useSetRecoilState(authState);
 
@@ -45,7 +45,7 @@ const FormLogin = () => {
     setAuth((prev) => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await axios.post('/api/auth/user/getUserByField', { email, password }, {
+      const response = await axios.post('/login', { email, password }, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -53,7 +53,7 @@ const FormLogin = () => {
       });
       
       const user = response.data.user;
-      localStorage.setItem('user', user);
+      localStorage.setItem('user', JSON.stringify(user)); 
       setAuth({ isLoggedIn: true, user, loading: false, error: null });
       setEmail('');
       setPassword('');
