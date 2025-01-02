@@ -45,7 +45,7 @@ const FormLogin: React.FC = () => {
     setAuth((prev) => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await axios.post('/login', { email, password }, {
+      const response = await axios.post('/auth/login', { email, password }, {
         headers: {
           'Content-Type': 'application/json',
         },
