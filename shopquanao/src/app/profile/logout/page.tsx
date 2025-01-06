@@ -17,8 +17,8 @@ const Login = () => {
           <input type="password" placeholder="Password" className="w-full px-3 py-2 border rounded-md" />
         </div>
         <div className="flex items-center justify-between mb-4">
-          <div>
-            <input type="checkbox" id="rememberMe" className="mr-2" />
+          <div className="flex items-center">
+            <input type="checkbox" id="rememberMe" className="mr-2 form-checkbox text-pink-500" />
             <label htmlFor="rememberMe">Remember me</label>
           </div>
           <a href="#" className="text-pink-500 hover:text-black">Forgot Your Password?</a>
@@ -58,7 +58,7 @@ const CreateAccount = () => {
           <input type="password" placeholder="Confirm Password" className="w-full px-3 py-2 border rounded-md" />
         </div>
         <div className="flex items-center mb-4">
-          <input type="checkbox" id="terms" className="mr-2" />
+          <input type="checkbox" id="terms" className="mr-2 form-checkbox text-pink-500" />
           <label htmlFor="terms">I have read and agree to the terms & conditions</label>
         </div>
         <button type="submit" className="w-full bg-pink-500 text-white py-2 rounded-md hover:bg-pink-600">Submit & Register</button>
