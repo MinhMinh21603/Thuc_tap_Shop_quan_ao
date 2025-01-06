@@ -17,7 +17,11 @@ const Sidebar = () => {
                         Wishlist
                     </li>
         </Link>
-        <li className="text-black font-medium">Log Out</li>
+        <Link href="/profile/logout">
+                    <li className="text-black font-medium cursor-pointer">
+                        Log Out
+                    </li>
+        </Link>
       </ul>
     </div>
   );
