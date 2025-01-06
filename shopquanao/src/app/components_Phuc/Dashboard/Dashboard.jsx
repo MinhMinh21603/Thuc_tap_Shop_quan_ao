@@ -47,7 +47,11 @@ const Dashboard = () => {
                         Wishlist
                     </li>
             </Link>
-            <li className="text-gray-700 hover:text-pink-500 cursor-pointer">Log Out</li>
+            <Link href="/profile/logout">
+                    <li className="text-black font-medium cursor-pointer">
+                        Log Out
+                    </li>
+            </Link>
           </ul>
         </aside>
         <div className="w-3/4 p-4">
